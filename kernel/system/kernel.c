@@ -6,6 +6,8 @@
 // Imports
 #include <stddef.h>
 #include <stdint.h>
+#include "../include/vga.h"
+#include "../include/color.h"
 
 // Check to see if we're using a cross compiler...
 #if defined(__linux__)
@@ -16,3 +18,12 @@
 #if !defined(__i386__)
 #error "ERR: Wrong arch (i386 required)"
 #endif
+
+#if defined(__cplusplus)
+extern "C" // C Linkage
+#endif
+
+void kernel_main(void)
+	terminal_initialize();
+	printk("TN-UX v1\n");
+}
